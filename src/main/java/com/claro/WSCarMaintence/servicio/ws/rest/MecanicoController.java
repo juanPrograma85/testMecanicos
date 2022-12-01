@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.claro.WSCarMaintence.Exception.RequestException;
 import com.claro.WSCarMaintence.interfase.MecanicoRepository;
 import com.claro.WSCarMaintence.model.Mecanicos;
+
+import io.swagger.annotations.ApiOperation;
 
 
 @RestController
@@ -34,6 +38,13 @@ public class MecanicoController {
 	{    
 		return service.findAll();    
 	}
+	
+	@GetMapping
+	@ApiOperation(value = "Mecánicos disponibles", notes = "Servicio REST para obtener los mecánicos disponibles.")
+	public ResponseEntity<List<Mecanicos>> mecanicosDisponibles() {
+		return new ResponseEntity<List<Mecanicos>>(service.consultarMecanicosDisponibles(), HttpStatus.OK);
+	}
+	
 
 	@PostMapping("/add")
 	public void addMecanico(@RequestParam(name = "in_tipo_documento", required = true) String in_tipo_documento
