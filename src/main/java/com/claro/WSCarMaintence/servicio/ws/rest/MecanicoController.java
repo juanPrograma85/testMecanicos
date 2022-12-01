@@ -39,7 +39,7 @@ public class MecanicoController {
 		return service.findAll();    
 	}
 	
-	@GetMapping
+	@GetMapping("/available")
 	@ApiOperation(value = "Mecánicos disponibles", notes = "Servicio REST para obtener los mecánicos disponibles.")
 	public ResponseEntity<List<Mecanicos>> mecanicosDisponibles() {
 		return new ResponseEntity<List<Mecanicos>>(service.consultarMecanicosDisponibles(), HttpStatus.OK);

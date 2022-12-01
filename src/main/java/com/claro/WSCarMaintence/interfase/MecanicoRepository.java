@@ -24,7 +24,7 @@ public interface MecanicoRepository extends JpaRepository<Mecanicos,Integer>  {
 
 	List<Mecanicos> findAll();
 	
-	@Query(value = "SELECT mec.tipo_documento, mec.documento, mec.primer_nombre,mec.segundo_nombre, mec.primer_apellido, mec.segundo_apellido,mec.celular, mec.direccion, mec.email, mec.estado,(SELECT COALESCE(SUM(ser.tiempo_estimado), 0) FROM servicios_x_mantenimientos AS ser WHERE ser.cod_mantenimiento = man.codigo  AND man.fecha < (NOW()-INTERVAL '1 MONTH')) AS horas FROM mecanicos AS mec LEFT JOIN  mantenimientos AS man ON mec.tipo_documento = man.mec_tipo_documento AND mec.documento = man.mec_documento WHERE mec.estado = 'D' ORDER BY horas DESC LIMIT 10", nativeQuery = true)
+	@Query(value = "SELECT mec.tipo_documento, mec.documento, mec.primer_nombre,mec.segundo_nombre, mec.primer_apellido, mec.segundo_apellido,mec.celular, mec.direccion, mec.email, mec.estado,(SELECT COALESCE(SUM(ser.tiempo_estimado), 0) FROM servicios_x_mantenimientos AS ser WHERE ser.cod_mantenimiento = man.codigo  AND man.fecha < (NOW()-INTERVAL '1 MONTH')) AS horas FROM mecanicos AS mec LEFT JOIN  mantenimientos AS man ON mec.tipo_documento = man.mec_tipo_documento AND mec.documento = man.mec_documento WHERE mec.estado = 'a' ORDER BY horas DESC LIMIT 10", nativeQuery = true)
 	public List<Mecanicos> consultarMecanicosDisponibles();
 
 	//@Procedure("sp_crear_mecanico")
@@ -38,5 +38,5 @@ public interface MecanicoRepository extends JpaRepository<Mecanicos,Integer>  {
 			,@Param("in_estado")String in_estado 
 			) throws InvalidDataAccessApiUsageException ;
 
-	Mecanicos findByName(String string);
+	//Mecanicos findByName(String string);
 } 
