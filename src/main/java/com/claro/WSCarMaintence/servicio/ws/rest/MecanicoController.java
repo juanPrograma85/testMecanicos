@@ -65,7 +65,7 @@ public class MecanicoController {
 							+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"); 
 			Matcher mather = pattern.matcher(in_email);
 
-			if (mather.find() != true) {
+			if (!mather.find()) {
 				logger.info("*** EL CORREO NO CUMPLE CON EL FORMATO:");
 				throw new RequestException ("Formato de Email incorrecto");
 				
