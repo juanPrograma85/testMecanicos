@@ -36,7 +36,7 @@ public class MecanicoController {
 	@GetMapping("/all")
 	public List<Mecanicos> getAllMecanics()  
 	{    
-		return service.findAll();    
+		return service.selectAll();    
 	}
 	
 	@GetMapping("/available")
