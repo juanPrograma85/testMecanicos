@@ -35,15 +35,15 @@ public class MecanicoController {
 	private MecanicoRepository service;    
 
 	@GetMapping("/all")
-	public HttpStatus getAllMecanics()  
+	public ResponseEntity<List<Mecanicos>> getAllMecanics()  
 	{    
 		List <Mecanicos> lst = new ArrayList<Mecanicos>();
 		lst= service.selectAll();
 		System.out.println(lst.size());   
-		if(lst.size()!=0&& lst!=null) {
-			return HttpStatus.OK;
+		if(lst.size()!=0) {
+			return new ResponseEntity<List<Mecanicos>>(lst, HttpStatus.OK);
 		}
-		return HttpStatus.NO_CONTENT;
+		return new ResponseEntity<List<Mecanicos>>(lst, HttpStatus.NO_CONTENT);
 	}
 	
 	@GetMapping("/available")
