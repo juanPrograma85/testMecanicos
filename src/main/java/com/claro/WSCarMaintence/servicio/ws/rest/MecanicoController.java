@@ -1,5 +1,6 @@
 package com.claro.WSCarMaintence.servicio.ws.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -33,12 +34,16 @@ public class MecanicoController {
 	@Autowired    
 	private MecanicoRepository service;    
 
-	@SuppressWarnings("unchecked")
 	@GetMapping("/all")
-	public List<Mecanicos> getAllMecanics()  
+	public HttpStatus getAllMecanics()  
 	{    
-		return (List<Mecanicos>) new ResponseEntity<List<Mecanicos>>(service.selectAll(), HttpStatus.OK);  
-		
+		List <Mecanicos> lst = new ArrayList<Mecanicos>();
+		lst= service.selectAll();
+		System.out.println(lst.size());   
+		if(lst.size()!=0&& lst!=null) {
+			return HttpStatus.OK;
+		}
+		return HttpStatus.NO_CONTENT;
 	}
 	
 	@GetMapping("/available")
