@@ -17,7 +17,7 @@ import com.claro.WSCarMaintence.model.Mecanicos;
 @Transactional() 
 public interface MecanicoRepository extends JpaRepository<Mecanicos, Integer> {
 
-	@Query(value = "SELECT * from public.mecanicos",nativeQuery = true)
+	@Query(value = "SELECT * from public.mecanicos;",nativeQuery = true)
 	List<Mecanicos> selectAll();
 	
 	
@@ -31,7 +31,7 @@ public interface MecanicoRepository extends JpaRepository<Mecanicos, Integer> {
 			+ " WHERE ser.cod_mantenimiento = man.codigo  AND man.fecha < (NOW()-INTERVAL '1 MONTH')) "
 			+ "AS horas FROM public.mecanicos AS mec LEFT JOIN public.mantenimientos AS man ON mec.tipo_documento = "
 			+ "man.mec_tipo_documento AND mec.documento = man.mec_documento WHERE mec.estado = 'a' ORDER BY"
-			+ " horas DESC LIMIT 10", nativeQuery = true)
+			+ " horas DESC LIMIT 10;", nativeQuery = true)
 	public List<Mecanicos> consultarMecanicosDisponibles();
 
 //	@Procedure("sp_crear_mecanico")
