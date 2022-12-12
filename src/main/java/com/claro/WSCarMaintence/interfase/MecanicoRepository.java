@@ -6,6 +6,7 @@ import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,7 +34,7 @@ public interface MecanicoRepository extends JpaRepository<Mecanicos, Integer> {
 			+ " horas DESC LIMIT 10", nativeQuery = true)
 	public List<Mecanicos> consultarMecanicosDisponibles();
 
-	// @Procedure("sp_crear_mecanico")
+//	@Procedure("sp_crear_mecanico")
 	@Query(value = "CALL public.sp_crear_mecanico(:in_tipo_documento,:in_documento,:in_primer_nombre,:in_segundo_nombre,:in_primer_apellido,:in_segundo_apellido,:in_celular,:in_direccion,:in_email,:in_estado)", nativeQuery = true)
 	@Modifying
 	void insertMecanico(@Param("in_tipo_documento") String in_tipo_documento, @Param("in_documento") int in_documento,
