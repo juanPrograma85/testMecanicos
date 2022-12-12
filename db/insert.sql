@@ -34,7 +34,7 @@ ALTER PROCEDURE public.sp_crear_mecanico(character varying, integer, character v
 -- inserts
 INSERT INTO public.mecanicos(
 	tipo_documento, documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, celular, direccion, email, estado)
-	VALUES ('cc',1030630689,'Juan','Camilo','Leal','Rojas','3503476985','Carrera 4','algo@gmail.com','a')
+	VALUES ('cc',1030630689,'Juan','Camilo','Leal','Rojas','3503476985','Carrera 4','algo@gmail.com','a');
 	
 	
 	INSERT INTO public.clientes(
@@ -43,15 +43,15 @@ INSERT INTO public.mecanicos(
 	
 	INSERT INTO public.marcas(
 	codigo, nombre_marca)
-	VALUES (1,'CHEVROLET')
+	VALUES (1,'CHEVROLET');
 	
 	INSERT INTO public.vehiculos(
 	placa, color, cod_marca, cli_documento, cli_tipo_documento)
-	VALUES ('XUB395', 'Negro', 1, 54653213, cc);
+	VALUES ('XUB395', 'Negro', 1, 54653213, 'cc');
 	
 	INSERT INTO public.mantenimientos(
 	codigo, estado, cod_placa, fecha, mec_documento, mec_tipo_documento)
-	VALUES (1, 1, 'XUB395', '2022/11/30', 1234567432, 'cc');
+	VALUES (1, 1, 'XUB395', '2022/11/30', 1030630689, 'cc');
 	
 	INSERT INTO public.fotos(
 	codigo, ruta, cod_mantenimiento)
@@ -86,7 +86,7 @@ INSERT INTO public.mecanicos(
 	
 	INSERT INTO public.servicios_x_mantenimientos(
 	codigo, tiempo_estimado, cod_servicio, cod_mantenimiento)
-	VALUES (1, '2h', 2, 1);
+	VALUES (1, 2, 2, 1);
 	
 	--End inserts
 	
