@@ -17,12 +17,10 @@ import com.claro.WSCarMaintence.model.Mecanicos;
 @Transactional() 
 public interface MecanicoRepository extends JpaRepository<Mecanicos, Integer> {
 
-	@Query(value = "SELECT * from mecanicosp;",nativeQuery = true)
+	@Query(value = "SELECT * from mecanicos;",nativeQuery = true)
 	List<Mecanicos> selectAll();
-	
-	
-	List<Mecanicos> findAll();
-	
+		
+	List<Mecanicos> findAll();	
 
 	@Query(value = "SELECT mec.tipo_documento, mec.documento, "
 			+ "mec.primer_nombre,mec.segundo_nombre, mec.primer_apellido, "

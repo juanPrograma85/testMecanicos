@@ -33,10 +33,12 @@ public class MecanicoController {
 	@Autowired    
 	private MecanicoRepository service;    
 
+	@SuppressWarnings("unchecked")
 	@GetMapping("/all")
 	public List<Mecanicos> getAllMecanics()  
 	{    
-		return service.selectAll();    
+		return (List<Mecanicos>) new ResponseEntity<List<Mecanicos>>(service.selectAll(), HttpStatus.OK);  
+		
 	}
 	
 	@GetMapping("/available")
