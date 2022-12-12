@@ -14,11 +14,13 @@ import javax.persistence.ParameterMode;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "mecanicos", schema = "public")
 @Getter
 @Setter
+@ToString
 @IdClass(value = MecanicoID.class)
 @NamedStoredProcedureQuery(name = "sp_crear_mecanico", 
 procedureName = "public.sp_crear_mecanico", parameters = {
