@@ -28,7 +28,7 @@ BEGIN
 	--RETURN @desc;
 END;
 $BODY$;
-ALTER PROCEDURE public.sp_crear_mecanico(character varying, integer, character varying, character varying, character varying, character varying, character varying, character varying, character varying, character)
+ALTER FUNCTION public.sp_crear_mecanico(character varying, integer, character varying, character varying, character varying, character varying, character varying, character varying, character varying, character)
     OWNER TO postgres;
 
 -- inserts
