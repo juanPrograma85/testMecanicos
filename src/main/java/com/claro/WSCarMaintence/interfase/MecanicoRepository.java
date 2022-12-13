@@ -24,9 +24,9 @@ public interface MecanicoRepository extends JpaRepository<Mecanicos, Integer> {
 
 	@Query(value = "SELECT mec.tipo_documento, mec.documento, mec.primer_nombre, mec.segundo_nombre, mec.primer_apellido,\r\n" + 
 			" mec.segundo_apellido,mec.celular, mec.direccion, mec.email, mec.estado,\r\n" + 
-			" (SELECT COALESCE(SUM(ser.tiempo_estimado), 0) FROM servicios_x_mantenimientos AS\r\n" + 
+			" (SELECT COALESCE(SUM(ser.tiempo_estimado), 0) FROM carcare.servicios_x_mantenimientos AS\r\n" + 
 			" ser WHERE ser.cod_mantenimiento = man.codigo  AND man.fecha < DATE_SUB(NOW(), INTERVAL 1 MONTH))\r\n" + 
-			" AS horas FROM mecanicos AS mec LEFT JOIN mantenimientos AS man ON mec.tipo_documento = man.mec_tipo_documento\r\n" + 
+			" AS horas FROM carcare.mecanicos AS mec LEFT JOIN carcare.mantenimientos AS man ON mec.tipo_documento = man.mec_tipo_documento\r\n" + 
 			" AND mec.documento = man.mec_documento WHERE mec.estado = 'a' ORDER BY horas DESC LIMIT 10;", nativeQuery = true)
 	public List<Mecanicos> consultarMecanicosDisponibles();
 
